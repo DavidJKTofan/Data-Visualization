@@ -19,7 +19,7 @@ Poligonos_inside <- add_osm_feature(mapa1,
 # Formatting to Spatial
 df <- osmdata_sp(Poligonos_inside)
 
-# Centroides de cada polígono + representación
+# Centroides of each Polygon + Representation
 spChFIDs(df$osm_polygons) <- 1:nrow(df$osm_polygons@data)
 
 # Represent the points
