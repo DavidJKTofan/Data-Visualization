@@ -1,5 +1,9 @@
 ## OPENSTREETMAP ##
-library(osmdata);library(rgdal);library(maptools);library(rgeos);library(leaflet)
+# Load libraries
+if(!require(c('osmdata', 'rgdal', 'maptools', 'rgeos', 'leaflet'))){
+  install.packages(c('osmdata', 'rgdal', 'maptools', 'rgeos', 'leaflet'))
+  library(c('osmdata', 'rgdal', 'maptools', 'rgeos', 'leaflet'))
+}
 
 # Download the info
 # City Map
