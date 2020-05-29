@@ -1,0 +1,187 @@
+---
+title: "ACTIVITY 1"
+author: "David Tofan"
+date: "18/5/2020"
+output:
+  html_document:
+    theme: readable
+    highlight: tango
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    toc_collapsed: true
+    number_sections: true
+---
+
+# Description
+
+This was an activity during our university class Geolocation.
+
+# Load libraries
+
+```{r}
+# Install/Load all necessary libraries
+prepare_packages <- function(packages){
+  # Check what packages are not installed
+  not_installed <- packages[!(packages %in% installed.packages()[, "Package"])]
+  # Install missing packages
+  if (length(not_installed)) 
+    install.packages(not_installed, dependencies = TRUE)
+  # Load the entire list of packages
+  sapply(packages, require, character.only = TRUE)
+}
+packages <- c("rgdal",
+              "sp",
+              "raster",
+              "rgeos",
+              'MASS'
+)
+prepare_packages(packages)
+```
+
+# Question 1
+
+Download a Shape File.
+
+* How many Polygons does it have?
+
+Dimensions: 159, 20
+
+```{r}
+# SOURCE: https://arc-garc.opendata.arcgis.com/datasets/dc20713282734a73abe990995de40497_68
+# OGA Open User Licence
+# Georgia
+# Load data (Polygons)
+Poligonos_Georgia <- readOGR(dsn="/Users/davidtofan/Desktop/Education/Business Analytics/Modulo 5/Geolocalización con R/Actividades/Counties_Georgia-shp/Counties_Georgia.shp", layer="Counties_Georgia")
+
+# ANOTHER METHOD TO DOWNLOAD DATA
+#library(geosphere)
+# Download shapefile of Georgia’s borders
+#Poligonos_Georgia = getData("GADM", country="GEO", level=0)
+```
+
+```{r}
+# Visualize
+par(mfrow = c(1, 2))
+plot(Poligonos_Georgia, main="Georgia")
+```
+
+```{r}
+# Dimensions
+dim(Poligonos_Georgia)
+```
+
+```{r}
+# CRS
+#crs(Poligonos_Georgia)
+Poligonos_Georgia@proj4string
+
+# Change CRS
+Poligonos_Georgia_WGS84 <- spTransform(Poligonos_Georgia, CRS("+proj=longlat +datum=WGS84"))
+plot(Poligonos_Georgia_WGS84, main = "Poligonos_WGS84")
+```
+
+```{r}
+# Convert to DataFrame
+DF_Poligonos_Georgia <- as.data.frame(Poligonos_Georgia)
+head(DF_Poligonos_Georgia)
+```
+
+# Question 2
+
+* After reading the SHP File, what class does the created object have? (Class (object))
+
+```{r}
+class(Poligonos_Georgia)
+```
+
+```{r}
+class(DF_Poligonos_Georgia)
+```
+
+# Question 3
+
+* Which are the 3 regions with the largest area?
+
+Ware, Burke, and Clinch County have the biggest areas.
+
+```{r}
+# Calculate area (m2)
+sqm <- geosphere::areaPolygon(Poligonos_Georgia)
+# Convert sqm to km2
+sqkm <- sqm/1000000
+# Add as column
+Poligonos_Georgia$Area_sqm <- sqkm
+DF_Poligonos_Georgia$Area_sqm <- sqkm
+
+# Area, add as column (?)
+#Poligonos_Georgia$Area_sqm <- area(Poligonos_Georgia)
+```
+
+```{r}
+# Exctract the 3 biggest areas
+Pol_ordenados <- order(Poligonos_Georgia$Area_sqm,
+                       decreasing = TRUE)[1:3]
+as.data.frame(Poligonos_Georgia[Pol_ordenados,])
+```
+
+# Question 4
+
+* Download 5 coordinates of specific points of the region through any official source.
+
+Random clicks on the map (show address) in the State of Georgia.
+Source: https://www.openstreetmap.org/search
+
+```{r}
+par(mfrow = c(1, 2))
+Latitud <- c(32.9718,33.7083,34.0140,32.6301,32.389)
+Longitud <- c(-84.2651,-84.4135,-84.3558,-83.6169,-81.914)
+LONGLAT <- as.data.frame(cbind(Longitud, Latitud))
+LONGLAT
+```
+
+```{r}
+bbdd2 <- LONGLAT
+# Create coordinates
+coordinates(bbdd2) <- c('Longitud','Latitud')
+# Add WGS84 as CRS
+proj4string(bbdd2) <- proj4string(Poligonos_Georgia)
+```
+
+# Question 5
+
+* Represent the Polygons and the Points together.
+
+<b>First Method</b>
+
+```{r}
+plot(Poligonos_Georgia, main="Poligonos")
+points(bbdd2, cex=2, pch=19, col="red")
+```
+
+<b>Segundo método</b>
+
+```{r}
+Poligonos_WGS84 <- spTransform(Poligonos_Georgia,CRS("+proj=longlat +datum=WGS84"))
+plot(Poligonos_WGS84,main="Poligonos_WGS84")
+
+points(bbdd2,cex=1,pch=19,col="red")
+```
+
+# Question 6
+
+* Could you briefly describe the following coordinate system?
+
+`coord. ref. : +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0`
+
+CRS: Coordinate Reference System
+
+`+proj=longlat`: compact way to identify a spatial or coordinate reference system. In this case it is `longlat`, meaning Longitude and Latitude.
+
+`+datum=WGS84`: The datum WGS84 (the datum refers to the 0,0 reference for the coordinate system used in the projection).
+
+`+ellps=WGS84`: the ellipsoid (how the earth’s roundness is calculated) for the data is WGS84.
+
+`+towgs84=0,0,0`: it is an additional that shows us the preferred transformation for our `datum`.
+
+
