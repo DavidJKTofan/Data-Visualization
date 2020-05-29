@@ -52,7 +52,7 @@ Dimensions: 159, 20
 # OGA Open User Licence
 # Georgia
 # Load data (Polygons)
-Poligonos_Georgia <- readOGR(dsn="/Users/davidtofan/Desktop/Education/Business Analytics/Modulo 5/Geolocalización con R/Actividades/Counties_Georgia-shp/Counties_Georgia.shp", layer="Counties_Georgia")
+Poligonos_Georgia <- readOGR(dsn="/Actividades/Counties_Georgia-shp/Counties_Georgia.shp", layer="Counties_Georgia")
 
 # ANOTHER METHOD TO DOWNLOAD DATA
 #library(geosphere)
