@@ -1,9 +1,24 @@
 ## OPENSTREETMAP ##
 # Load libraries
-if(!require(c('osmdata', 'rgdal', 'maptools', 'rgeos', 'leaflet'))){
-  install.packages(c('osmdata', 'rgdal', 'maptools', 'rgeos', 'leaflet'))
-  library(c('osmdata', 'rgdal', 'maptools', 'rgeos', 'leaflet'))
+# Load Libraries
+prepare_packages <- function(packages){
+  # Check if packages are not installed
+  not_installed <- packages[!(packages %in% installed.packages()[, 'Package'])]
+  # If not installed, install
+  if (length(not_installed)) 
+    install.packages(not_installed, dependencies = TRUE)
+  # Load all packages
+  sapply(packages, require, character.only = TRUE)
 }
+packages <- c('osmdata', # OpenStreetMap
+              'rgdal', # Projection/Transformation operations 
+              'maptools', # Geographic Data Manipulation
+              'rgeos', # Topology Operations
+              'leaflet', # Interactive Charts
+              'dplyr', # Data Manipulation
+              'geosphere' # Trigonometry (Distances)
+)
+prepare_packages(packages)
 
 # Download the info
 # City Map
@@ -75,8 +90,49 @@ for(i in 1:length(ut)){
 
 buffdis <- gUnaryUnion(buffdis, buffdis$nth)
 
-leaflet(centroides) %>% 
+leaflet(centroides, options = leafletOptions(minZoom = 10, maxZoom = 18)) %>% 
   addTiles() %>% 
   addPolygons(data = buffdis, col = 'red') %>% 
+  setMaxBounds(lng1 = -3.903, lat1 = 40.216, lng2 = -3.303, lat2 = 40.816 ) %>%
   addCircles()
+
+
+## CALCULATE DISTANCE ##
+# Exctracting Longitude and Latitude from Leaflet centroides
+# Convert to DataFrame
+centroides_LongLat <- as.data.frame(centroides)
+# Preview Coordinates
+head(centroides_LongLat)
+
+# Other Longitude and Latitude (locations)
+data_LongLat <- data.frame(longitude = c(-3.30322, -3.30373), 
+                           latitude = c(40.21689, 40.21669))  # Other Locations
+# Preview Coordinates
+head(data_LongLat)
+
+# Add new columns
+data_LongLat$distancia_km <- NA
+data_LongLat$x <- NA
+data_LongLat$y <- NA
+### START FOR LOOP ###
+for(i in 1:nrow(data_LongLat)) {
+  # Distance
+  Dist <- distm(centroides_LongLat,  # ALL buildings from OpenStreetMap
+                data_LongLat[i,1:2],  # Other Locations
+                fun = distCosine) / 1000  # 'Law Of Cosines' Great Circle Distance
+  # Output = kilometers (km)
+  Dist <- apply(Dist,  # variable
+                1,  # 1 = Row / 2 = Columns
+                min)  # function
+  # Find closest places/locations to Other Locations
+  min_number <- which.min(Dist) # which(Dist == min(Dist))
+  min_number_value <- centroides_LongLat[min_number,]
+  # Add values to DataFrame (unite)
+  data_LongLat[i,4] <- min_number_value[1,1]
+  data_LongLat[i,5] <- min_number_value[1,2]
+  data_LongLat$distancia_km[i] <- min(Dist)
+}
+### END FOR LOOP ###
+# Preview closest centroides to Other Locations and their distance to them
+head(data_LongLat)
 
