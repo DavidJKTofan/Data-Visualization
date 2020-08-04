@@ -1,5 +1,5 @@
 # Data-Visualization
-Some simple examples of data visualization – using tools like R, Tableau and PowerBI.<br><br>
+Some simple examples of data visualization – using tools like R, Python, and Tableau.<br>
 
 How to create an interactive <a href="https://developers.google.com/chart/interactive/docs/gallery/barchart" target="_blank">Horizontal Bar Chart</a> with <a href="https://developers.google.com/chart/" target="_blank">Google Charts</a>?
 <br>
