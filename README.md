@@ -1,5 +1,6 @@
-<<<<<<< HEAD
-# Interactive Charts
+# Data-Visualization
+Some simple examples of data visualization – using tools like R, Tableau and PowerBI.<br><br>
+
 How to create an interactive <a href="https://developers.google.com/chart/interactive/docs/gallery/barchart" target="_blank">Horizontal Bar Chart</a> with <a href="https://developers.google.com/chart/" target="_blank">Google Charts</a>?
 <br>
 It all started with me wanting to know how to create a horizontal bar chart which changes the data shown when a specific button is pressed.
@@ -11,7 +12,10 @@ Here is the <a href="https://github.com/DavidJKTofan/Interactive-Google-Charts/b
 More examples of other Charts can be found here <a href="https://github.com/DavidJKTofan/Interactive-Google-Charts/tree/master/Examples" target="_blank">More Charts</a>
 
 ## Programming Languages
-The following programming languages have been used to create the chart: HTML5, CSS and JavaScript (Google Charts).
+The following programming languages have been used to create some of the charts: 
+
+- JavaScript (Google Charts)
+- R
 
 ## Responsive Chart
 In order to adapt the size of the chart and make it responsive, you'll have to play with the ChartArea in the JS file, the CSS @media part, as well as the HTML div size (or other layout elements) where the chart should appear.
@@ -27,9 +31,3 @@ This is one of my first projects (just for fun) :) so please don't be too harsh 
 <br>
 <br>
 Want to get in touch? Write me on <a href="https://www.linkedin.com/in/davidtofan" target="_blank">LinkedIn</a>.
-=======
-# Data-Visualization
-Some simple examples of data visualization – using tools like R, Tableau and PowerBI.<br><br>
-
-Check out also my other repository https://github.com/DavidJKTofan/Interactive-Google-Charts
->>>>>>> Data-Visualization/master
