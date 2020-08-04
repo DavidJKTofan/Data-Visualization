@@ -1,18 +1,19 @@
 # Data-Visualization
-Some simple examples of data visualization – using tools like R, Python, and Tableau.
+Some simple examples of data visualization – using JavaScript, R, Python, and Tableau.
 <br>
-How to create an interactive <a href="https://developers.google.com/chart/interactive/docs/gallery/barchart" target="_blank">Horizontal Bar Chart</a> with <a href="https://developers.google.com/chart/" target="_blank">Google Charts</a>?
+It all started with the question: How to create an interactive <a href="https://developers.google.com/chart/interactive/docs/gallery/barchart" target="_blank">Horizontal Bar Chart</a> with <a href="https://developers.google.com/chart/" target="_blank">Google Charts</a>?
 <br>
 <br>
 Here is the [BarChart-Buttons.html](BarChart-Buttons.html) to preview in any HTML editor or browser. 
 <br>
 <br>
-More examples of other Charts can be found here [GoogleCharts](GoogleCharts).
+More examples of other JS Charts can be found here <a href="https://github.com/DavidJKTofan/Data-Visualization/tree/master/GoogleCharts" target="_blank">GoogleCharts</a>.
 
 ## Programming Languages
 The following programming languages have been used to create some of the charts: 
 
 - JavaScript (Google Charts)
+- Python
 - R
 
 ## Responsive Charts
