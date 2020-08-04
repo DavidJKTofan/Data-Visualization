@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Interactive Charts
 How to create an interactive <a href="https://developers.google.com/chart/interactive/docs/gallery/barchart" target="_blank">Horizontal Bar Chart</a> with <a href="https://developers.google.com/chart/" target="_blank">Google Charts</a>?
 <br>
@@ -26,3 +27,9 @@ This is one of my first projects (just for fun) :) so please don't be too harsh 
 <br>
 <br>
 Want to get in touch? Write me on <a href="https://www.linkedin.com/in/davidtofan" target="_blank">LinkedIn</a>.
+=======
+# Data-Visualization
+Some simple examples of data visualization – using tools like R, Tableau and PowerBI.<br><br>
+
+Check out also my other repository https://github.com/DavidJKTofan/Interactive-Google-Charts
+>>>>>>> Data-Visualization/master
