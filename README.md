@@ -7,7 +7,7 @@ How to create an interactive <a href="https://developers.google.com/chart/intera
 Here is the [BarChart-Buttons.html](BarChart-Buttons.html) to preview in any HTML editor or browser. 
 <br>
 <br>
-More examples of other Charts can be found here <a href="https://github.com/DavidJKTofan/Data-Visualization/tree/master/Examples" target="_blank">More Charts</a>
+More examples of other Charts can be found here [GoogleCharts](GoogleCharts).
 
 ## Programming Languages
 The following programming languages have been used to create some of the charts: 
