@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- The CSS starts here -->
+<style>
+
+@media (max-width: 800px) {
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
+
+/* The Chart Div CSS */
+#chart_divchart {
+  width: 50%;
+  height: 250px;
+  margin-bottom: 30px;
+}
+
+/* The Buttons CSS */
+button {
+    padding: 1em 2.1em 1.1em;
+    border-radius: 3px;
+    margin: 10px 10px 10px 10px;
+    color: #FFFFFF;
+    background-color: #FFFFFF;
+    display: inline-block;
+    background: #0068b7;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    font-family: 'Arial';
+    font-weight: 800;
+    font-size: 1em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    position: relative;
+}
+
+button:hover{background-color:#004b85;}
+
+button:focus{background-color:#004b85;}
+
+/* The Tooltip color and structure CSS */
+div.google-visualization-tooltip {
+	/* style the tooltip here */
+            width: auto;
+            border: none;
+            border-radius: 12px;
+            background-color: rgb(30, 50, 230);
+            position: absolute;
+            background: -moz-linear-gradient(30deg, rgb(0,99,199) 30%, rgb(0,62,125) 70%);
+            background: -webkit-linear-gradient(30deg, rgb(0,99,199) 30%, rgb(0,62,125) 70%);
+            background: -o-linear-gradient(30deg, rgb(0,99,199) 30%, rgb(0,62,125) 70%);
+            background: -ms-linear-gradient(30deg, rgb(0,99,199) 30%, rgb(0,62,125) 70%);
+            background: linear-gradient(120deg, rgb(0,99,199) 30%, rgb(0,62,125) 70%);
+            font-size: 10px;
+}
+
+/* The Tooltip text CSS */
+div.google-visualization-tooltip > ul > li > span {
+            color: #FFFFFF !important;
+            font-family: 'Arial' !important;
+            font-size: 14px !important;
+}
+
+}
+
+@media (min-width: 801px) {
+/* The CSS for all other screen sizes starts here */
+/* The Chart Div CSS */
+#chart_divchart {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 30px;
+}
+
+/* The Buttons CSS */
+button {
+    padding: 1em 2.1em 1.1em;
+    border-radius: 3px;
+    margin: 8px 8px 8px 8px;
+    color: #FFFFFF;
+    background-color: #FFFFFF;
+    display: inline-block;
+    background: #0068b7;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    font-family: 'Arial';
+    font-weight: 800;
+    font-size: .85em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    position: relative;
+}
+
+button:hover{background-color:#004b85;}
+
+button:focus{background-color:#004b85;}
+}
+</style>
+
+<!-- The JS starts here -->
+<!-- Load the AJAX API -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+/* Load the Visualization API and the corechart package */
+/* Here goes the data */
+    google.charts.load('current', {
+  'callback': function () {
+    var Totalchart = google.visualization.arrayToDataTable([
+      ['Category', 'large added value', {role: 'annotation'}, 'small added value', {role: 'annotation'}, 'no added value', {role: 'annotation'}],
+      ['Category 1',  27, '27%',	33, '33%',	40, '40%'],
+      ['Category 2',  30, '30%',	34, '34%',	35, '35%'],
+      ['Category 3',  33, '33%',	43, '43%',	24, '24%'],
+      ['Category 4',  33, '33%',	41, '41%',	26, '26%'],
+      ['Category 5',  39, '39%',	42, '42%',	19, '19%'],
+      ['Category 6',  39, '39%',	39, '39%',	22, '22%'],
+      ['Category 7',  41, '41%',	42, '42%',	17, '17%'],
+      ['Category 8',  42, '42%',	37, '37%',	22, '22%'],
+      ['Category 9',  42, '42%',	34, '34%',	25, '25%'],
+      ['Category 10',  43, '43%',	42, '42%',	15, '15%']
+    ]);
+
+    var Premiumchart = google.visualization.arrayToDataTable([
+      ['Category', 'large added value', {role: 'annotation'}, 'small added value', {role: 'annotation'}, 'no added value', {role: 'annotation'}],
+      ['Category 1',  33, '33%',	36, '36%',	31, '31%'],
+      ['Category 2',  36, '36%',	35, '35%',	29, '29%'],
+      ['Category 3',  38, '38%',	43, '43%',	19, '19%'],
+      ['Category 4',  40, '40%',	41, '41%',	19, '19%'],
+      ['Category 5',  44, '44%',	41, '41%',	15, '15%'],
+      ['Category 6',  44, '44%',	38, '38%',	18, '18%'],
+      ['Category 7',  46, '46%',	41, '41%',	13, '13%'],
+      ['Category 8',  51, '51%',	32, '32%',	16, '16%'],
+      ['Category 9',  46, '46%',	34, '34%',	20, '20%'],
+      ['Category 10',  47, '47%',	40, '40%',	12, '12%']
+    ]);
+
+    var NonPremiumchart = google.visualization.arrayToDataTable([
+      ['Category', 'large added value', {role: 'annotation'}, 'small added value', {role: 'annotation'}, 'no added value', {role: 'annotation'}],
+      ['Category 1',  22, '22%',	32, '32%',	46, '46%'],
+      ['Category 2',  27, '27%',	34, '34%',	40, '40%'],
+      ['Category 3',  30, '30%',	43, '43%',	27, '27%'],
+      ['Category 4',  29, '29%',	41, '41%',	30, '30%'],
+      ['Category 5',  35, '35%',	43, '43%',	22, '22%'],
+      ['SCategory 6',  36, '36%',	39, '39%',	25, '25%'],
+      ['Category 7',  37, '37%',	43, '43%',	20, '20%'],
+      ['Category 8',  34, '34%',	40, '40%',	26, '26%'],
+      ['Category 9',  39, '39%',	34, '34%',	28, '28%'],
+      ['Category 10',  41, '41%',	43, '43%',	16, '16%']
+    ]);
+
+/* Customizing the chart */
+    var optionschart = {
+    title: '',
+    sort: 'event',
+    sortAscending: false,
+    sortColumn: 0,
+    height: '100%',
+    width: '100%',
+    bar: {groupWidth: '50%'},
+    baselineColor: 'transparent',
+    legend: 'none',
+    chartArea: {
+          height: '100%',
+          width: '100%',
+          top: 80,
+          left: 120,
+          bottom: 80,
+          right: 20
+      },
+    annotations: {
+          alwaysOutside: false,
+          textStyle: {
+            fontName: 'Arial',
+            fontSize: 10,
+            bold:true,
+            auraColor: '#eee',
+            color: '#FFFFFF'
+    }},
+    animation:{
+        startup: true,
+        duration: 800,
+        easing: 'out',
+    },
+    isStacked: 'percent',
+    hAxis: {
+      ticks: []
+        },
+    vAxis: {
+      textStyle: {
+              fontName: 'Arial',
+              color: '#000000',
+              fontSize: 11,
+              bold: true
+              },
+        },
+    colors:['#0068b7', '#FF0000', '#bcbdc0']
+      };
+
+/* Sorting of Data */
+Totalchart.sort([{column: 1, desc:true}, {column: 3, desc:true}]);
+Premiumchart.sort([{column: 1, desc:true}, {column: 3, desc:true}]);
+NonPremiumchart.sort([{column: 1, desc:true}, {column: 3, desc:true}]);
+
+/* Event Listener */
+    var chart = new google.visualization.BarChart(document.getElementById('chart_divchart'));
+    chart.draw(Totalchart, optionschart);
+
+    document.getElementById('totalchart').addEventListener('click', function () {
+      function drawChart() {
+      Array.from(document.querySelectorAll("[id='totalchart']")).map(function(button) {
+           button.style.backgroundColor="#004b85";
+      })
+      Array.from(document.querySelectorAll("[id='premiumchart'], [id='nonpremiumchart']")).map(function(button) {
+           button.style.backgroundColor="#0068b7";
+      })
+      chart.draw(Totalchart, optionschart);
+      }
+      drawChart();
+    }, false);
+
+    document.getElementById('premiumchart').addEventListener('click', function () {
+      function drawChart() {
+      Array.from(document.querySelectorAll("[id='premiumchart']")).map(function(button) {
+           button.style.backgroundColor="#004b85";
+      })
+      Array.from(document.querySelectorAll("[id='totalchart'], [id='nonpremiumchart']")).map(function(button) {
+           button.style.backgroundColor="#0068b7";
+      })
+      chart.draw(Premiumchart, optionschart);
+      }
+      drawChart();
+    }, false);
+
+    document.getElementById('nonpremiumchart').addEventListener('click', function () {
+      function drawChart() {
+      Array.from(document.querySelectorAll("[id='nonpremiumchart']")).map(function(button) {
+           button.style.backgroundColor="#004b85";
+      })
+      Array.from(document.querySelectorAll("[id='totalchart'], [id='premiumchart']")).map(function(button) {
+           button.style.backgroundColor="#0068b7";
+      })
+      chart.draw(NonPremiumchart, optionschart);
+      }
+      drawChart();
+    }, false);
+  },
+  'packages':['corechart']
+});
+</script>
+</head>
+
+<!-- The HTML Body starts here -->
+<body>
+
+<!-- The Chart is drawn here -->
+<div id="chart_divchart"/></div>
+
+<!-- Here are the Buttons -->
+<div align="center">
+  <button id="totalchart" style="background-color:#004b85">Total</button>
+  <button id="premiumchart">Premium</button>
+  <button id="nonpremiumchart">Non Premium</button>
+</div>
+</body>
+</html>
