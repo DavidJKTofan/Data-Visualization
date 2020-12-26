@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- The CSS starts here -->
+<style> 
+
+@media (max-width: 800px) {
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
+
+/* The Chart Div CSS */
+#chart_div {
+  width: 50%;
+  height: 250px;
+  margin-bottom: 30px;
+}
+
+/* The Buttons CSS */
+button {
+    padding: 1em 2.1em 1.1em;
+    border-radius: 3px;
+    margin: 10px 10px 10px 10px;
+    color: #FFFFFF;
+    background-color: #FFFFFF;
+    display: inline-block;
+    background: #003E7D;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-size: 1em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    position: relative;
+}
+
+button:hover{background-color:#F46B1B;}
+
+button:focus{background-color:#F46B1B;}
+
+}
+
+@media (min-width: 801px) {
+/* The CSS for all other screen sizes starts here */
+/* The Chart Div CSS */
+#chart_div {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 30px;
+}
+
+/* The Buttons CSS */
+button {
+    padding: 1em 2.1em 1.1em;
+    border-radius: 3px;
+    margin: 8px 8px 8px 8px;
+    color: #FFFFFF;
+    background-color: #FFFFFF;
+    display: inline-block;
+    background: #003E7D;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-size: .85em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    position: relative;
+}
+
+button:hover{background-color:#F46B1B;}
+
+button:focus{background-color:#F46B1B;}
+}
+</style>
+
+<!-- The JS starts here -->
+<!-- Load the AJAX API -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+/* Load the Visualization API and the corechart package */
+/* Here goes the data */
+    google.charts.load('current', {
+  'callback': function () {
+    var dataTotal = google.visualization.arrayToDataTable([
+      ['Total', 'Legend 1', 'Legend 2'],
+      ['Data 1', 27, 22],
+      ['Data 2', 29, 45],
+      ['Data 3', 44, 98]
+    ]);
+
+    var dataMale = google.visualization.arrayToDataTable([
+      ['Total', 'Legend 1', 'Legend 2'],
+      ['Data 1', 23, 9],
+      ['Data 2', 26, 45],
+      ['Data 3', 51, 62]
+    ]);
+
+    var dataFemale = google.visualization.arrayToDataTable([
+      ['Total', 'Legend 1', 'Legend 2'],
+      ['Data 1', 31, 87],
+      ['Data 2', 32, 13],
+      ['Data 3', 37, 47]
+    ]);
+
+/* Customizing the chart */
+    var options = {
+      title: '',
+      height: '100%',
+      width: '100%',
+      pointShape: 'star',
+      pointSize: 20,
+      series: {
+                0: { pointShape: 'circle' },
+                1: { pointShape: 'triangle' },
+                2: { pointShape: 'square' },
+                3: { pointShape: 'diamond' },
+                4: { pointShape: 'star' },
+                5: { pointShape: 'polygon' }
+            },
+      legend: {
+          position:"bottom", 
+          alignment:"center", 
+          textStyle: {
+                    fontSize: 12, 
+                    fontName: 'Montserrat',
+                    bold: false}
+          },
+     animation: {
+          duration: 700,
+          easing: 'inAndOut',
+          startup: true
+        },
+     colors:['#003E7D', '#F46B1B', '#A7C246'],
+     hAxis: {
+          ticks: [0, 20, 40, 60, 80, 100],
+                  textStyle: {
+                     color: '#000000',
+                     fontSize: 15,
+                     fontName: 'Montserrat',
+                     bold: true,
+                  },
+               },
+     vAxis: {
+                  textStyle: {
+                     color: '#000000',
+                     fontSize: 15,
+                     fontName: 'Montserrat',
+                     bold: false,
+                  },
+          ticks: [0, 20, 40, 60, 80, 100],
+          gridlines: {color: '#ccc'}
+        },
+     chartArea: {
+        height: '100%',
+        width: '100%',
+        top: 80,
+        left: 120,
+        bottom: 80,
+        right: 20
+  },
+               height:550,
+            };
+
+/* Event Listener */
+    var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+    chart.draw(dataTotal, options);
+
+    document.getElementById('total').addEventListener('click', function () {
+      chart.draw(dataTotal, options);
+    }, false);
+
+    document.getElementById('male').addEventListener('click', function () {
+      chart.draw(dataMale, options);
+    }, false);
+
+    document.getElementById('female').addEventListener('click', function () {
+      chart.draw(dataFemale, options);
+    }, false);
+  },
+  'packages':['corechart']
+});
+</script>
+</head>
+
+<!-- The HTML Body starts here -->
+<body>
+
+<!-- The Chart is drawn here -->
+<div id="chart_div"/></div>
+
+<!-- Here are the Buttons -->
+<div align="center">
+<button id="total"/>Total</button>
+<button id="male"/>Male</button>
+<button id="female"/>Female</button>
+</div>
+</body>
+</html>
