@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta chartset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie = edge" />
+    <title>Document</title>
+    <style>
+	*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+  background-color: RGB(32, 35, 48);
+}
+
+/* Logo position and animation */
+#logo{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 50px;
+  width:auto;
+  max-width:100%;
+  height:50%;
+  transform: translate(-50%, -50%);
+  animation: fill 0.5s ease forwards 3.5s;
+}
+
+/* Each path has a number which can be determined by the app.js file */
+#logo path:nth-child(1){
+  stroke-dasharray: 263.52001953125;
+  stroke-dashoffset: 263.52001953125;
+  animation: line-anim 2s ease forwards;
+}
+
+#logo path:nth-child(2){
+  stroke-dasharray: 390.6620178222656;
+  stroke-dashoffset: 390.6620178222656;
+  animation: line-anim 2s ease forwards 0.3s;
+}
+
+#logo path:nth-child(3){
+  stroke-dasharray: 497.7220764160156;
+  stroke-dashoffset: 497.7220764160156;
+  animation: line-anim 2s ease forwards 0.6s;
+}
+
+#logo path:nth-child(4){
+  stroke-dasharray: 409.592041015625;
+  stroke-dashoffset: 409.592041015625;
+  animation: line-anim 2s ease forwards 0.9s;
+}
+
+#logo path:nth-child(5){
+  stroke-dasharray: 263.52001953125;
+  stroke-dashoffset: 263.52001953125;
+  animation: line-anim 2s ease forwards 1.2s;
+}
+
+#logo path:nth-child(6){
+  stroke-dasharray: 409.5920715332031;
+  stroke-dashoffset: 409.5920715332031;
+  animation: line-anim 2s ease forwards 1.5s;
+}
+
+#logo path:nth-child(7){
+  stroke-dasharray: 540.7230224609375;
+  stroke-dashoffset: 540.7230224609375;
+  animation: line-anim 2s ease forwards 1.8s;
+}
+
+#logo path:nth-child(8){
+  stroke-dasharray: 457.62469482421875;
+  stroke-dashoffset: 457.62469482421875;
+  animation: line-anim 2s ease forwards 2.1s;
+}
+
+/* Line animation starting from 0 */
+@keyframes line-anim{
+  to{
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Fill transition from transparent to color */
+@keyframes fill{
+  from{
+    fill: transparent;
+  }
+  to{
+    fill: white;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <svg id="logo" viewBox="0 0 718 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.8497 3.56V74.36H55.1697V83H2.8497V3.56H11.8497Z" stroke="white" stroke-width="4"/>
+      <path d="M146.133 3.56V48.8C146.133 59.36 142.973 67.88 136.653 74.36C130.413 80.76 122.293 83.96 112.293 83.96C102.373 83.96 94.2525 80.76 87.9325 74.36C81.6925 67.88 78.5725 59.36 78.5725 48.8V3.56H87.5725V49.04C87.5725 57.6 90.1325 64.28 95.2525 69.08C99.6525 73.16 105.333 75.2 112.293 75.2C119.253 75.2 124.973 73.16 129.453 69.08C134.573 64.36 137.133 57.68 137.133 49.04V3.56H146.133Z" stroke="white" stroke-width="4"/>
+      <path d="M249.931 3.56V83H239.491L190.411 15.92V83H181.411V3.56H191.851L240.931 70.4V3.56H249.931Z" stroke="white" stroke-width="4"/>
+      <path d="M355.578 83H345.618L335.898 59.96H296.538L286.818 83H276.858L310.578 3.56H321.858L355.578 83ZM332.418 51.68L316.218 12.92L300.018 51.68H332.418Z" stroke="white" stroke-width="4"/>
+      <path d="M391.472 3.56V74.36H434.792V83H382.472V3.56H391.472Z" stroke="white" stroke-width="4"/>
+      <path d="M532.616 83H522.656L512.936 59.96H473.576L463.856 83H453.896L487.616 3.56H498.896L532.616 83ZM509.456 51.68L493.256 12.92L477.056 51.68H509.456Z" stroke="white" stroke-width="4"/>
+      <path d="M620.229 24.56C620.229 33.28 616.669 39.24 609.549 42.44C616.109 44.6 620.589 48.56 622.989 54.32C623.869 56.56 624.309 59.16 624.309 62.12C624.309 71.72 619.229 78.12 609.069 81.32C605.709 82.44 601.749 83 597.189 83H559.509V3.56H595.149C603.709 3.56 610.229 5.88 614.709 10.52C618.389 14.2 620.229 18.88 620.229 24.56ZM568.509 39.08H595.149C602.509 39.08 607.429 36.56 609.909 31.52C610.789 29.76 611.229 27.88 611.229 25.88C611.229 23.8 610.949 22 610.389 20.48C609.829 18.88 608.949 17.48 607.749 16.28C605.109 13.48 601.229 12.08 596.109 12.08H568.509V39.08ZM598.149 74.48C603.669 74.48 607.909 73.36 610.869 71.12C613.829 68.8 615.309 65.56 615.309 61.4C615.309 57.4 613.869 54.12 610.989 51.56C607.789 48.68 603.189 47.24 597.189 47.24H568.509V74.48H598.149Z" stroke="white" stroke-width="4"/>
+      <path d="M664.882 15.8C663.362 17.08 662.322 18.52 661.762 20.12C661.282 21.72 661.042 23.44 661.042 25.28C661.042 27.04 661.802 28.68 663.322 30.2C664.922 31.72 667.002 33 669.562 34.04C672.122 35.08 675.042 36 678.322 36.8C681.602 37.6 684.922 38.44 688.282 39.32C691.722 40.12 695.082 41.08 698.362 42.2C701.642 43.24 704.562 44.6 707.122 46.28C712.802 49.88 715.642 54.8 715.642 61.04C715.642 68.48 712.842 74.16 707.242 78.08C701.722 82 694.042 83.96 684.202 83.96C673.082 83.96 664.602 81.64 658.762 77C653.562 72.84 650.602 66.92 649.882 59.24H659.242C659.562 64.68 662.202 68.84 667.162 71.72C671.482 74.2 677.202 75.44 684.322 75.44C699.202 75.44 706.642 70.76 706.642 61.4C706.642 58.2 705.282 55.68 702.562 53.84C699.922 52 696.562 50.48 692.482 49.28C688.482 48.08 684.122 46.96 679.402 45.92C674.762 44.88 670.402 43.56 666.322 41.96C662.322 40.28 658.962 38.12 656.242 35.48C653.602 32.76 652.282 29.12 652.282 24.56C652.282 18.08 654.762 12.8 659.722 8.72001C664.682 4.64001 672.162 2.60001 682.162 2.60001C692.242 2.60001 700.042 4.92 705.562 9.56C710.602 13.64 713.282 18.88 713.602 25.28H704.362C703.562 18.72 699.322 14.36 691.642 12.2C688.922 11.4 685.522 11 681.442 11C677.442 11 674.042 11.48 671.242 12.44C668.522 13.32 666.402 14.44 664.882 15.8Z" stroke="white" stroke-width="4"/>
+    </svg>
+  </body>
+</html>
