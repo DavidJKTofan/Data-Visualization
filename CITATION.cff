@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Tofan"
+  given-names: "David J. K."
+  orcid: "https://orcid.org/0000-0001-8769-9560"
+title: "Intro to Data Visualization"
+date-released: 2019-12-10
+url: "https://github.com/DavidJKTofan/Data-Visualization"
